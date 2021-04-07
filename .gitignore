@@ -1,0 +1,7 @@
+**/.exercism/
+**/README.md
+**/*_test.sh
+**/vendor/
+makefile
+**/*.out
+
