@@ -1,24 +1,35 @@
 #!/usr/bin/env bash
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+
+   main () {
+     declare -A colors_of_resistor=( [black]=0 [brown]=1 [red]=2 [orange]=3 [yellow]=4 [green]=5 [blue]=6 [violet]=7 [grey]=8 [white]=9 )
+
+     COUNTER=0
+     result=""
+
+     
+	 for i in $@; do
+
+		let COUNTER=COUNTER+1 
+	    
+	    if [[ -z ${colors_of_resistor[$i]} ]];
+	    then
+	    	echo "invalid color"
+	    	exit 1;
+	    fi
+
+	    result="$result${colors_of_resistor[$i]}"
+
+	    
+	    if [[ $COUNTER == 2 ]];
+	    then
+	    	echo $result
+	    	exit 0;
+	    fi
+	 done
+	 
+	 echo $result
+
+   }
+
+   main "$@"
