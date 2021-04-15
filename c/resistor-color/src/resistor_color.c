@@ -1,17 +1,16 @@
 #include "resistor_color.h"
+#include <stdio.h>
 
-uint16_t color_code(resistor_band_t c){
-	return c;
+static resistor_band_t bands[] = {BLACK, BROWN, RED, ORANGE, YELLOW,
+                           GREEN, BLUE, VIOLET, GREY, WHITE};
+
+
+resistor_band_t color_code(resistor_band_t c){
+	return bands[c];
 }
 
 
-int * colors(){
+resistor_band_t* colors(){
 
-	int *res= malloc(WHITE + 1);
-
-	for (int index = BLACK; index <= WHITE; ++index) {
-	   res[index] = index; 
-	}	
-
-	return res;
+	return bands;
 }
