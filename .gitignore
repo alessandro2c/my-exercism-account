@@ -3,5 +3,5 @@
 **/*_test.sh
 **/vendor/
 # makefile
-**/*.out
+# **/*.out
 
