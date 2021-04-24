@@ -6,12 +6,20 @@ bool is_isogram(const char phrase[]){
 		return false;
 	}
 
-	for(uint8_t i = 0; i < strlen(phrase); i++){
-		char selected = tolower(phrase[i]);
+	//for (size_t i = 0, len = strlen(phrase); i < len; i++)
+	// or
+	//for (size_t i = 0; phrase[i];  i++)
+	// or
+	//for (const char *cp = phrase; *cp; cp++)
+
+
+	for (size_t i = 0; phrase[i];  i++){
+		char selected = tolower((unsigned char)phrase[i]);
 	    uint8_t occurrence = 0;
 		if(selected != '-' && selected != ' '){
-			for(uint8_t j = 0; j < strlen(phrase); j++){
-				if(selected == tolower(phrase[j]))
+			for (const char *cp = phrase; *cp; cp++)
+			{
+				if(selected == tolower((unsigned char)*cp))
 					occurrence++;
 				if(occurrence>1)
 					return false;
