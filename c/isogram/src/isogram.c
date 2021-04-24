@@ -2,7 +2,9 @@
 
 
 bool is_isogram(const char phrase[]){
-	if(phrase==NULL){
+  const int GAP_FROM_ZERO_INDEX = 97; 
+  
+  if(phrase==NULL){
 		return false;
 	}
 
@@ -11,12 +13,14 @@ bool is_isogram(const char phrase[]){
   for (const char *cp = phrase; *cp; cp++)
   {
     int selected = tolower((unsigned char)*cp);
-    if(selected != 45 && selected != 32 ){
-      int index = selected - 97;
 
-      repetitions[index]++;
+    if(selected >= '0' && selected <= '9' )
+      return false;
 
-      if(repetitions[index] > 1)
+    if(selected >= 'a' && selected <= 'z' ){
+      int index = selected - GAP_FROM_ZERO_INDEX; 
+
+      if(++repetitions[index] > 1)
         return false;
     }
   }

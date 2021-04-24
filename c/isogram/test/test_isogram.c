@@ -94,6 +94,20 @@ static void test_same_first_and_last_characters(void)
    TEST_ASSERT_FALSE(is_isogram("angola"));
 }
 
+static void test_numbers(void)
+{
+   //TEST_IGNORE();
+   TEST_ASSERT_FALSE(is_isogram("911"));
+}
+
+
+static void test_with_spec_char(void)
+{
+   //TEST_IGNORE();
+   TEST_ASSERT_TRUE(is_isogram("U.N.C.L.E"));
+}
+
+
 int main(void)
 {
    UnityBegin("test/test_isogram.c");
@@ -112,6 +126,7 @@ int main(void)
    RUN_TEST(test_made_up_name_that_is_an_isogram);
    RUN_TEST(test_duplicated_character_in_the_middle);
    RUN_TEST(test_same_first_and_last_characters);
-
+   RUN_TEST(test_numbers);
+   RUN_TEST(test_with_spec_char);
    return UnityEnd();
 }
